@@ -45,6 +45,7 @@ export default function TableRow({champ, dimensions, index}) {
         style={[
           index % 2 === 1 && styles.secondary_row,
           TableHeadstyles.table_row,
+
         ]}
         key={item.name}>
         <View
@@ -54,7 +55,7 @@ export default function TableRow({champ, dimensions, index}) {
           ]}>
           {laneImage[0][item.lane]}
         </View>
-        <View style={[TableHeadstyles.table_row_view, styles.image_row]}>
+        <View style={[TableHeadstyles.table_row_view, styles.image_row ,{marginRight:10}]}>
           <View style={styles.image_container}>
             <Image
               style={[

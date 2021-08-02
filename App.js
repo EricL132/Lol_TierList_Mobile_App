@@ -97,6 +97,54 @@ const App = () => {
     return ()=> dimensionsLis?.remove();
   }, []);
 
+  function doSort(sorted) {
+    if (JSON.stringify(sorted) === JSON.stringify(tier_list)) {
+      set_tier_list(sorted.reverse());
+    }
+    set_tier_list(sorted);
+  }
+  function SortByRole() {
+    const roles = [
+      "toplane",
+      "junglelane",
+      "midlane",
+      "botlane",
+      "supportlane",
+    ];
+    const sorted = [...tier_list].sort(
+      (a, b) => roles.indexOf(a.lane) - roles.indexOf(b.lane)
+    );
+    doSort(sorted);
+  }
+  function SortByName() {
+    const sorted = [...tier_list].sort((a, b) => a.name.localeCompare(b.name));
+    doSort(sorted);
+  }
+  function SortByTier() {
+    const sorted = [...tier_list].sort(
+      (a, b) => tiers[0].indexOf(a.tier) - tiers[0].indexOf(b.tier)
+    );
+    doSort(sorted);
+  }
+  function SortByWr() {
+    const sorted = [...tier_list].sort((a, b) => b.win_rate - a.win_rate);
+    doSort(sorted);
+  }
+
+  function SortByPr() {
+    const sorted = [...tier_list].sort((a, b) => b.pick_rate - a.pick_rate);
+    doSort(sorted);
+  }
+  function SortByBr() {
+    const sorted = [...tier_list].sort((a, b) => b.ban_rate - a.ban_rate);
+    doSort(sorted);
+  }
+  function SortByGp() {
+    const sorted = [...tier_list].sort(
+      (a, b) => parseInt(b.games_played) - parseInt(a.games_played)
+    );
+    doSort(sorted);
+  }
   return (
     
       <SafeAreaView style={styles.safeArea}>
@@ -193,7 +241,7 @@ const App = () => {
 
     
           <View style={styles.table_container}>
-            <TableHead dimensions={dimensions}></TableHead>
+            <TableHead dimensions={dimensions} sortByRow={SortByRole} sortByName={SortByName} sortByTier={SortByTier} sortByWr={SortByWr} sortByBr={SortByWr} sortByPr={SortByPr} sortByGp={SortByGp} ></TableHead>
                   <RefreshControl
       style={{flex: 1}}
       refreshing={refreshing}

@@ -1,16 +1,16 @@
-import React from 'react'
-import { View,Text,StyleSheet } from 'react-native'
-export default function TableHead({dimensions}){
+import React, { useEffect } from 'react'
+import { View,Text,StyleSheet, Pressable } from 'react-native'
+export default function TableHead({dimensions,sortByRow,sortByName,sortByTier,sortByWr,sortByBr,sortByPr,sortByGp}){
     return <View style={[styles.table_row,styles.table_head_row]}>
-    <View style={[styles.table_row_role,styles.table_row_view]}><Text style={[styles.table_row_text,styles.table_head_row_text]}>Role</Text></View>
-    <View style={styles.table_row_view}><Text style={[styles.table_row_text,styles.table_head_row_text]}>Champion</Text></View>
-    <View style={styles.table_row_view}><Text style={[styles.table_row_text,styles.table_head_row_text]}>Tier</Text></View>
-    <View style={styles.table_row_view}><Text style={[styles.table_row_text,styles.table_head_row_text]}>Win Rate</Text></View>
+    <Pressable onPress={sortByRow} style={[styles.table_row_role,styles.table_row_view]}><Text style={[styles.table_row_text,styles.table_head_row_text]}>Role</Text></Pressable>
+    <Pressable onPress={sortByName} style={[styles.table_row_view,{marginRight:10}]}><Text style={[styles.table_row_text,styles.table_head_row_text]}>Champion</Text></Pressable>
+    <Pressable onPress={sortByTier} style={[styles.table_row_view]}><Text style={[styles.table_row_text,styles.table_head_row_text]}>Tier</Text></Pressable>
+    <Pressable onPress={sortByWr} style={[styles.table_row_view]}><Text style={[styles.table_row_text,styles.table_head_row_text]}>Win Rate</Text></Pressable>
     {dimensions.window.width>650&&
     <>
-    <View style={styles.table_row_view}><Text style={[styles.table_row_text,styles.table_head_row_text]}>Ban Rate</Text></View>
-    <View style={styles.table_row_view}><Text style={[styles.table_row_text,styles.table_head_row_text]}>Pick Rate</Text></View>
-    <View style={styles.table_row_view}><Text style={[styles.table_row_text,styles.table_head_row_text]}>Games</Text></View>
+    <Pressable onPress={sortByBr} style={[styles.table_row_view]}><Text style={[styles.table_row_text,styles.table_head_row_text]}>Ban Rate</Text></Pressable>
+    <Pressable onPress={sortByPr} style={[styles.table_row_view]}><Text style={[styles.table_row_text,styles.table_head_row_text]}>Pick Rate</Text></Pressable>
+    <Pressable onPress={sortByGp} style={[styles.table_row_view]}><Text style={[styles.table_row_text,styles.table_head_row_text]}>Games</Text></Pressable>
     </>
     }
 </View>
