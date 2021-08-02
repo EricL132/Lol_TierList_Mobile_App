@@ -1,5 +1,5 @@
 # League of Legends Tier List Mobile App
-List updated every 6 hours  
+List updated every hour  
 Website https://league.erics.software/  
 Built with:
 * React-Native
